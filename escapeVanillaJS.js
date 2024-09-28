@@ -11,10 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.getElementById("solveRoom2").addEventListener("click", () => {
-        const jsConcepts = new Set(['closure', 'scope', 'hoisting' ]);
-        // 🪲 Bug: What's mssing from JS concepts?
+        const jsConcepts = new Set(['closure', 'scope', 'hoisting', 'async' ]);
+        // Async was missing
         const reactConcepts = new Set(['components', 'jsx', 'hooks', 'async']);
-        // 🪲 Bug: Incorrect function call
+        // 🪲 Corrected varieble reactConcepts
         const commonConcepts = findIntersection(jsConcepts, reactConcepts);
         document.getElementById("room2Result").textContent = `The code to unlock the door is: ${Array.from(commonConcepts).join(', ')}`;
     });
@@ -40,8 +40,10 @@ function findMostRecentBook(books) {
 }
 
 function findIntersection(setA, setB) {
-    // 🪲 Bug: Incorrect logic
-    const intersection = new Set([...setA]);
+    // Created new array for set B
+    const setBArr = [...setB]
+    // intersection checks for similarities in setA and set B
+    const intersection =  new Set([...setA].filter(item => setBArr.includes(item)));
     return intersection;
 }
 
